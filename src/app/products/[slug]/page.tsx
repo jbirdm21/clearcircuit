@@ -75,9 +75,34 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <div className="bg-gray-50 min-h-screen">
       {/* Structured Data */}
       <StructuredData 
-        type="product" 
-        product={product} 
-        testimonials={testimonials} 
+        pageType="product"
+        product={{
+          name: product.name,
+          description: product.description,
+          sku: product.id,
+          brand: 'ClearCircuit',
+          price: product.price,
+          currency: 'USD',
+          availability: product.inStock ? 'InStock' : 'OutOfStock',
+          image: product.image,
+          category: product.category,
+          features: product.features,
+          manufacturer: 'ClearCircuit',
+          condition: 'NewCondition',
+          warranty: 'Lifetime warranty',
+          reviews: testimonials.length > 0 ? {
+            ratingValue: testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length,
+            bestRating: 5,
+            worstRating: 1,
+            ratingCount: testimonials.length,
+            reviewBody: testimonials[0]?.content
+          } : undefined
+        }}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Products', url: '/products' },
+          { name: product.name, url: `/products/${product.slug}` }
+        ]}
       />
       
       {/* Breadcrumb */}

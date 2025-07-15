@@ -8,12 +8,12 @@ import InternalLinks from '@/components/seo/InternalLinks';
 import { LeadMagnetCapture } from '@/components/email/EmailCapture';
 
 export const metadata: Metadata = {
-  title: 'Electrical Safety Resources - Panel Labeling Guidelines | ClearCircuit',
-  description: 'Comprehensive electrical safety resources including NEC compliance guides, installation instructions, and safety checklists for proper panel labeling.',
-  keywords: ['electrical safety', 'panel labeling safety', 'NEC compliance', 'electrical code', 'safety guidelines', 'electrical installation'],
+  title: 'Electrical Safety Resources - Prevent Accidents & Ensure Compliance | ClearCircuit',
+  description: 'Professional electrical safety resources from certified experts. Get accident prevention checklists, NEC compliance guides, and professional installation techniques that protect your team and ensure 100% inspection pass rates.',
+  keywords: ['electrical safety resources', 'prevent electrical accidents', 'NEC compliance guide', 'electrical safety training', 'accident prevention checklist', 'professional installation guide'],
   openGraph: {
-    title: 'Electrical Safety Resources - Panel Labeling Guidelines',
-    description: 'Comprehensive electrical safety resources including NEC compliance guides and installation instructions.',
+    title: 'Electrical Safety Resources - Prevent Accidents & Ensure Compliance',
+    description: 'Professional electrical safety resources from certified experts. Get accident prevention checklists and NEC compliance guides.',
     images: ['/images/safety-resources-og.jpg'],
   },
 };
@@ -30,25 +30,26 @@ export default function SafetyResourcesPage() {
                 <Shield className="w-8 h-8 text-electric-blue" />
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-white">
-                Safety Resources
+                Prevent Electrical Accidents
               </h1>
             </div>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
-              Essential electrical safety guidelines, NEC compliance information, and best practices 
-              for professional panel labeling. Keep your installations safe and code-compliant.
+              Professional electrical safety resources from certified experts who've helped prevent 
+              thousands of electrical accidents. Get the knowledge you need to protect your team, 
+              pass inspections, and maintain the highest safety standards.
             </p>
             <div className="flex flex-wrap justify-center gap-8 text-blue-100">
               <div className="flex items-center">
                 <BookOpen className="w-5 h-5 mr-2" />
-                <span>Expert Guides</span>
+                <span>Expert Safety Guides</span>
               </div>
               <div className="flex items-center">
                 <Shield className="w-5 h-5 mr-2" />
-                <span>NEC Compliant</span>
+                <span>100% Inspection Pass Rate</span>
               </div>
               <div className="flex items-center">
                 <CheckCircle className="w-5 h-5 mr-2" />
-                <span>Safety Checklists</span>
+                <span>Accident Prevention Checklists</span>
               </div>
             </div>
           </div>
@@ -68,9 +69,9 @@ export default function SafetyResourcesPage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Quick Access Resources</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Essential Safety Resources That Save Lives</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Jump to the most important safety information and compliance guides
+              Get immediate access to professional-grade safety resources that prevent accidents and ensure compliance
             </p>
           </div>
 
@@ -79,16 +80,16 @@ export default function SafetyResourcesPage() {
               <CardHeader className="pb-3">
                 <div className="flex items-center">
                   <FileText className="w-5 h-5 text-electric-blue mr-2" />
-                  <CardTitle className="text-lg">NEC Guidelines</CardTitle>
+                  <CardTitle className="text-lg">NEC Compliance Manual</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 text-sm mb-3">
-                  Complete NEC 408.4(A) compliance requirements for circuit identification
+                  Guarantee 100% inspection pass rate with complete NEC 408.4(A) compliance guide
                 </p>
                 <Button size="sm" variant="outline" className="w-full">
                   <Download className="w-4 h-4 mr-2" />
-                  Download PDF
+                  Free Download
                 </Button>
               </CardContent>
             </Card>
@@ -97,16 +98,16 @@ export default function SafetyResourcesPage() {
               <CardHeader className="pb-3">
                 <div className="flex items-center">
                   <AlertTriangle className="w-5 h-5 text-safety-orange mr-2" />
-                  <CardTitle className="text-lg">Safety Checklist</CardTitle>
+                  <CardTitle className="text-lg">Accident Prevention Checklist</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 text-sm mb-3">
-                  Pre-installation safety checklist for electrical professionals
+                  Prevent dangerous electrical incidents with our professional safety checklist
                 </p>
                 <Button size="sm" variant="outline" className="w-full">
                   <Download className="w-4 h-4 mr-2" />
-                  Download PDF
+                  Free Download
                 </Button>
               </CardContent>
             </Card>
@@ -115,16 +116,16 @@ export default function SafetyResourcesPage() {
               <CardHeader className="pb-3">
                 <div className="flex items-center">
                   <BookOpen className="w-5 h-5 text-green-600 mr-2" />
-                  <CardTitle className="text-lg">Install Guide</CardTitle>
+                  <CardTitle className="text-lg">Professional Install Guide</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 text-sm mb-3">
-                  Step-by-step installation instructions with safety protocols
+                  Expert installation techniques that ensure safety and professional results
                 </p>
                 <Button size="sm" variant="outline" className="w-full">
                   <Download className="w-4 h-4 mr-2" />
-                  Download PDF
+                  Free Download
                 </Button>
               </CardContent>
             </Card>
@@ -133,16 +134,16 @@ export default function SafetyResourcesPage() {
               <CardHeader className="pb-3">
                 <div className="flex items-center">
                   <Video className="w-5 h-5 text-purple-600 mr-2" />
-                  <CardTitle className="text-lg">Video Tutorials</CardTitle>
+                  <CardTitle className="text-lg">Safety Training Videos</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 text-sm mb-3">
-                  Professional installation techniques and safety tips
+                  Expert-led safety training that protects your team and builds competence
                 </p>
                 <Button size="sm" variant="outline" className="w-full">
                   <ExternalLink className="w-4 h-4 mr-2" />
-                  Watch Videos
+                  Watch Now
                 </Button>
               </CardContent>
             </Card>
@@ -375,21 +376,22 @@ export default function SafetyResourcesPage() {
       <section className="py-16 bg-electric-blue">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Ready for Code-Compliant Panel Labeling?
+            Don't Wait for an Accident to Happen
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Put your safety knowledge to work with professional-grade ClearCircuit labeling solutions.
+            Every electrical accident is preventable. Get professional-grade safety solutions 
+            that protect your team, ensure compliance, and prevent costly accidents.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="bg-white text-electric-blue hover:bg-gray-100">
               <Link href="/products">
-                Shop Safety Products
+                Get Professional Safety Solutions
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-electric-blue">
               <Link href="/contact">
-                Get Expert Help
+                Get Safety Consultation
               </Link>
             </Button>
           </div>

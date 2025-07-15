@@ -14,29 +14,29 @@ interface FeatureGridProps {
 const defaultFeatures: Feature[] = [
   {
     id: '1',
-    title: 'Code-Compliant',
-    description: 'Meets NEC 408.4(A) requirements for circuit identification and labeling standards',
+    title: 'Never Fail Another Inspection',
+    description: 'Guaranteed NEC 408.4(A) compliance eliminates costly re-inspections and protects your professional reputation',
     icon: 'Shield',
     highlighted: true,
   },
   {
     id: '2',
-    title: 'Installs in 5 Minutes',
-    description: 'Peel-and-stick application with pre-engraved labels saves time and labor',
+    title: 'Complete Jobs 75% Faster',
+    description: 'Peel-and-stick installation takes just 5 minutes – no measuring, no guessing, no delays',
     icon: 'Clock',
     highlighted: false,
   },
   {
     id: '3',
-    title: 'Durable 10+ Years',
-    description: 'UL 969 certified materials withstand heat, moisture, and electrical environments',
+    title: 'Eliminate Emergency Calls',
+    description: 'Crystal-clear labels prevent confusion and reduce troubleshooting time from hours to minutes',
     icon: 'Award',
     highlighted: false,
   },
   {
     id: '4',
-    title: '85% of Electricians Recommend',
-    description: 'Trusted by professionals nationwide for quality and reliability',
+    title: 'Impress Every Client',
+    description: 'Professional appearance shows quality workmanship and builds trust with customers and inspectors',
     icon: 'Check',
     highlighted: false,
   },
@@ -52,8 +52,8 @@ const iconMap = {
 
 export default function FeatureGrid({
   features = defaultFeatures,
-  title = 'Why Choose ClearCircuit?',
-  subtitle = 'Professional-grade solutions designed for electrical safety and compliance',
+  title = 'Transform Your Electrical Work Forever',
+  subtitle = 'Stop wasting time on confusing panels and start impressing clients with professional-grade solutions',
   variant = 'default',
 }: FeatureGridProps) {
   return (

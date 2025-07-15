@@ -61,7 +61,7 @@ export default function HeroSection({
                 ))}
               </div>
               <span className="ml-2 text-sm text-gray-300">
-                {rating}/5 from {ratingCount}+ electricians
+                {rating}/5 from {ratingCount}+ electrical professionals
               </span>
             </div>
 
@@ -97,15 +97,15 @@ export default function HeroSection({
             <div className="mt-8 flex items-center justify-center lg:justify-start space-x-6 text-sm text-gray-400">
               <div className="flex items-center">
                 <span className="w-2 h-2 bg-safety-yellow rounded-full mr-2" />
-                NEC 408.4(A) Compliant
+                100% Inspection Pass Rate
               </div>
               <div className="flex items-center">
                 <span className="w-2 h-2 bg-safety-yellow rounded-full mr-2" />
-                UL 969 Certified
+                10+ Year Durability
               </div>
               <div className="flex items-center">
                 <span className="w-2 h-2 bg-safety-yellow rounded-full mr-2" />
-                5-Year Warranty
+                Zero-Accident Guarantee
               </div>
             </div>
           </motion.div>

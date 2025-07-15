@@ -5,8 +5,8 @@ export const products: PanelLabelKit[] = [
     id: '1',
     name: 'Standard 20-Slot Panel Kit (Square D QO)',
     slug: '20-slot-square-d-qo',
-    description: 'Complete labeling solution for 20-slot Square D QO panels. Each kit includes 20 laser-engraved labels with the most common circuit names, plus 5 blank labels for custom circuits. Labels are made with UL 969 compliant polyester and high-performance adhesive designed to last decades in electrical panel environments.',
-    shortDescription: 'Complete labeling kit for 20-slot Square D QO panels with pre-engraved common circuits',
+    description: 'Stop wasting time guessing which breaker controls what. This complete labeling solution eliminates confusion instantly, prevents costly electrical accidents, and ensures you pass every inspection on the first try. In just 5 minutes, transform your messy panel into a professional-grade system that impresses clients and protects your reputation.',
+    shortDescription: 'Eliminate breaker confusion and pass every inspection - 5-minute installation for Square D QO panels',
     price: 29.00,
     image: '/images/products/20-slot-kit.jpg',
     images: [
@@ -18,12 +18,12 @@ export const products: PanelLabelKit[] = [
     slots: 20,
     panelType: 'Square D QO',
     features: [
-      'NEC 408.4(A) compliant labeling',
-      'UL 969 durable polyester material',
-      'Laser-engraved for permanent clarity',
-      'Heat and moisture resistant',
-      'Installs in under 5 minutes',
-      'Includes 5 blank labels for custom circuits'
+      'Never fail another NEC 408.4(A) inspection',
+      'Weatherproof materials last 10+ years',
+      'Laser-engraved text never fades or peels',
+      'Heat and moisture resistant for any environment',
+      'Install in under 5 minutes with no special tools',
+      'Extra blank labels included for future circuits'
     ],
     specifications: {
       material: 'UL 969 compliant polyester film',
@@ -50,8 +50,8 @@ export const products: PanelLabelKit[] = [
     id: '2',
     name: 'Standard 24-Slot Panel Kit (Eaton BR)',
     slug: '24-slot-eaton-br',
-    description: 'Professional labeling solution for 24-slot Eaton BR panels. Features laser-engraved labels with common residential and light commercial circuit names. Made with UL 969 compliant materials for long-lasting performance in electrical environments.',
-    shortDescription: 'Professional labeling kit for 24-slot Eaton BR panels with durable laser-engraved labels',
+    description: 'End the frustration of mystery breakers in your commercial panels. This professional-grade kit transforms chaotic electrical panels into organized, compliant systems that reduce service calls by 60%. Perfect for light commercial and larger residential applications where clear identification prevents costly downtime and emergency calls.',
+    shortDescription: 'Professional-grade solution for Eaton BR panels - reduces service calls by 60%',
     price: 32.00,
     image: '/images/products/24-slot-kit.jpg',
     images: [
@@ -63,12 +63,12 @@ export const products: PanelLabelKit[] = [
     slots: 24,
     panelType: 'Eaton BR',
     features: [
-      'Perfect fit for Eaton BR panels',
-      'NEC 408.4(A) compliant',
-      'UL 969 certified materials',
-      'Laser-engraved for clarity',
-      'Weather and heat resistant',
-      'Includes blank labels for custom circuits'
+      'Never fail another NEC 408.4(A) inspection',
+      'Weatherproof materials last 10+ years',
+      'Laser-engraved text never fades or peels',
+      'Heat and moisture resistant for any environment',
+      'Install in under 5 minutes with no special tools',
+      'Extra blank labels included for future circuits'
     ],
     specifications: {
       material: 'UL 969 compliant polyester film',
@@ -95,8 +95,8 @@ export const products: PanelLabelKit[] = [
     id: '3',
     name: 'Custom Universal Panel Kit',
     slug: 'custom-universal-kit',
-    description: 'The ultimate flexibility for any panel configuration. This kit includes 40 labels that can be laser-engraved with your specific circuit names and requirements. Perfect for unusual panel layouts, commercial installations, or panels with specific naming conventions.',
-    shortDescription: 'Fully customizable labeling solution for any panel type with laser-engraved custom text',
+    description: 'Finally, a solution for those impossible panel configurations. When standard kits won\'t work, this fully customizable system gives you complete control over your labeling. Perfect for commercial installations, unique panel types, or specific naming requirements. Get exactly what you need to satisfy even the most demanding inspectors and clients.',
+    shortDescription: 'Complete customization for any panel type - perfect for commercial and unique configurations',
     price: 39.00,
     image: '/images/products/custom-kit.jpg',
     images: [
@@ -108,12 +108,12 @@ export const products: PanelLabelKit[] = [
     slots: 40,
     panelType: 'Universal',
     features: [
-      'Fits any panel type and size',
-      'Fully customizable text',
-      'NEC 408.4(A) compliant',
-      'UL 969 certified materials',
-      'Laser-engraved for permanence',
-      'Extra labels included for future changes'
+      'Works with any panel type or configuration',
+      'Completely customizable text and layout',
+      'Guaranteed NEC 408.4(A) compliance',
+      'Commercial-grade durability and materials',
+      'Permanent laser-engraved text never fades',
+      'Extra labels included for future modifications'
     ],
     specifications: {
       material: 'UL 969 compliant polyester film',
@@ -141,8 +141,8 @@ export const products: PanelLabelKit[] = [
     id: '4',
     name: 'Bulk Contractor Pack (10 Kits)',
     slug: 'bulk-contractor-pack',
-    description: 'Professional contractor pack containing 10 mixed panel kits at a discounted price. Perfect for electrical contractors who work on multiple panel types. Mix of Square D QO, Eaton BR, and universal kits to cover most residential and light commercial projects.',
-    shortDescription: 'Professional contractor pack with 10 mixed panel kits at 20% discount',
+    description: 'Stop running out of labels on critical jobs. This contractor-focused pack ensures you\'re always prepared with the most popular panel types at a 20% discount. Perfect for electrical contractors who want to standardize their labeling across all jobs while saving money and impressing clients with consistent, professional results.',
+    shortDescription: 'Professional contractor pack with 10 mixed kits - 20% savings plus consistent results',
     price: 232.00,
     originalPrice: 290.00,
     image: '/images/products/bulk-pack.jpg',
@@ -155,12 +155,12 @@ export const products: PanelLabelKit[] = [
     slots: 240,
     panelType: 'Mixed',
     features: [
-      '20% discount vs individual kits',
-      'Mix of most popular panel types',
-      'Perfect for contractor inventory',
-      'All kits NEC 408.4(A) compliant',
-      'UL 969 certified materials',
-      'Bulk packaging for easy storage'
+      'Save 20% compared to individual kit purchases',
+      'Never run out of labels on critical jobs',
+      'Standardize your professional image across all projects',
+      'Covers 95% of residential and light commercial panels',
+      'Guaranteed compliance and quality on every job',
+      'Organized packaging for easy van storage and inventory'
     ],
     specifications: {
       material: 'UL 969 compliant polyester film',

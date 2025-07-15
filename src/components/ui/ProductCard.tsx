@@ -178,7 +178,7 @@ export default function ProductCard({
                     className="flex-1 bg-electric-blue hover:bg-electric-blue/90"
                   >
                     <ShoppingCart className="w-4 h-4 mr-2" />
-                    Add to Cart
+                    Start Protection
                   </Button>
                   <Button
                     asChild
@@ -186,7 +186,7 @@ export default function ProductCard({
                     className="border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-white"
                   >
                     <Link href={`/products/${product.slug}`}>
-                      Details
+                      Learn More
                     </Link>
                   </Button>
                 </div>

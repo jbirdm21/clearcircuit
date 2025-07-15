@@ -9,12 +9,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { LeadMagnetCapture } from '@/components/email/EmailCapture';
 
 export const metadata: Metadata = {
-  title: 'Contact ClearCircuit - Expert Electrical Panel Labeling Support',
-  description: 'Get expert help with electrical panel labeling. Contact ClearCircuit for product support, custom quotes, and professional advice from electrical safety experts.',
-  keywords: ['contact ClearCircuit', 'electrical panel support', 'custom quotes', 'electrical safety help', 'NEC compliance support'],
+  title: 'Contact ClearCircuit - Expert Electrical Safety Consultation & Emergency Support',
+  description: 'Get immediate expert consultation from certified electrical safety professionals. 24/7 emergency support, professional safety assessments, and custom safety solutions. Every electrical accident is preventable.',
+  keywords: ['electrical safety consultation', 'emergency electrical support', 'NEC compliance experts', 'professional electrical safety', 'accident prevention consultation'],
   openGraph: {
-    title: 'Contact ClearCircuit - Expert Electrical Panel Labeling Support',
-    description: 'Get expert help with electrical panel labeling. Professional support from electrical safety experts.',
+    title: 'Contact ClearCircuit - Expert Electrical Safety Consultation & Emergency Support',
+    description: 'Get immediate expert consultation from certified electrical safety professionals. 24/7 emergency support available.',
     images: ['/images/contact-og.jpg'],
   },
 };
@@ -27,24 +27,25 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Get Expert Help
+              Get Expert Safety Consultation
             </h1>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
-              Our electrical safety experts are here to help you find the perfect panel labeling 
-              solution. Get personalized support, custom quotes, and professional guidance.
+              Our certified electrical safety experts provide professional guidance to ensure your panels 
+              meet NEC compliance, prevent accidents, and protect your team. Get personalized solutions 
+              from the industry's most trusted safety authority.
             </p>
             <div className="flex flex-wrap justify-center gap-8 text-blue-100">
               <div className="flex items-center">
                 <Phone className="w-5 h-5 mr-2" />
-                <span>Phone Support</span>
+                <span>Immediate Expert Response</span>
               </div>
               <div className="flex items-center">
                 <Mail className="w-5 h-5 mr-2" />
-                <span>Email Support</span>
+                <span>Professional Consultation</span>
               </div>
               <div className="flex items-center">
                 <MessageSquare className="w-5 h-5 mr-2" />
-                <span>Live Chat</span>
+                <span>Free Safety Assessment</span>
               </div>
             </div>
           </div>
@@ -55,9 +56,9 @@ export default function ContactPage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Multiple Ways to Reach Us</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Professional Support When You Need It</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Choose the contact method that works best for your needs
+              Choose the expert consultation method that fits your urgent safety needs
             </p>
           </div>
 
@@ -68,20 +69,20 @@ export default function ContactPage() {
                 <div className="w-16 h-16 bg-electric-blue rounded-full flex items-center justify-center mx-auto mb-4">
                   <Phone className="w-8 h-8 text-white" />
                 </div>
-                <CardTitle>Sales & Product Info</CardTitle>
-                <CardDescription>Get help choosing the right products</CardDescription>
+                <CardTitle>Safety Solutions & Consultation</CardTitle>
+                <CardDescription>Professional guidance for your specific safety needs</CardDescription>
               </CardHeader>
               <CardContent className="text-center">
                 <div className="space-y-2 mb-4">
                   <div className="text-2xl font-bold text-electric-blue">(555) 123-4567</div>
-                  <div className="text-gray-600">sales@clearcircuit.com</div>
+                  <div className="text-gray-600">safety@clearcircuit.com</div>
                 </div>
                 <div className="text-sm text-gray-600">
                   <div className="flex items-center justify-center mb-1">
                     <Clock className="w-4 h-4 mr-1" />
-                    Mon-Fri: 8 AM - 6 PM EST
+                    Mon-Fri: 7 AM - 8 PM EST
                   </div>
-                  <div>Average response: 2 hours</div>
+                  <div>Expert response: Under 1 hour</div>
                 </div>
               </CardContent>
             </Card>
@@ -92,20 +93,20 @@ export default function ContactPage() {
                 <div className="w-16 h-16 bg-safety-orange rounded-full flex items-center justify-center mx-auto mb-4">
                   <Shield className="w-8 h-8 text-white" />
                 </div>
-                <CardTitle>Technical Support</CardTitle>
-                <CardDescription>Installation help and troubleshooting</CardDescription>
+                <CardTitle>Emergency Safety Support</CardTitle>
+                <CardDescription>Immediate help for critical electrical safety issues</CardDescription>
               </CardHeader>
               <CardContent className="text-center">
                 <div className="space-y-2 mb-4">
-                  <div className="text-2xl font-bold text-safety-orange">(555) 123-4568</div>
-                  <div className="text-gray-600">support@clearcircuit.com</div>
+                  <div className="text-2xl font-bold text-safety-orange">(555) 911-SAFE</div>
+                  <div className="text-gray-600">emergency@clearcircuit.com</div>
                 </div>
                 <div className="text-sm text-gray-600">
                   <div className="flex items-center justify-center mb-1">
                     <Clock className="w-4 h-4 mr-1" />
-                    Mon-Fri: 7 AM - 8 PM EST
+                    24/7 Emergency Line
                   </div>
-                  <div>Average response: 1 hour</div>
+                  <div>Critical response: Under 30 minutes</div>
                 </div>
               </CardContent>
             </Card>
@@ -116,20 +117,20 @@ export default function ContactPage() {
                 <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Users className="w-8 h-8 text-white" />
                 </div>
-                <CardTitle>Custom Solutions</CardTitle>
-                <CardDescription>Bulk orders and custom labeling</CardDescription>
+                <CardTitle>Professional Contractor Support</CardTitle>
+                <CardDescription>Bulk orders and custom safety solutions</CardDescription>
               </CardHeader>
               <CardContent className="text-center">
                 <div className="space-y-2 mb-4">
                   <div className="text-2xl font-bold text-green-600">(555) 123-4569</div>
-                  <div className="text-gray-600">custom@clearcircuit.com</div>
+                  <div className="text-gray-600">contractors@clearcircuit.com</div>
                 </div>
                 <div className="text-sm text-gray-600">
                   <div className="flex items-center justify-center mb-1">
                     <Clock className="w-4 h-4 mr-1" />
-                    Mon-Fri: 9 AM - 5 PM EST
+                    Mon-Fri: 8 AM - 6 PM EST
                   </div>
-                  <div>Average response: 4 hours</div>
+                  <div>Custom quote: Same day response</div>
                 </div>
               </CardContent>
             </Card>
@@ -146,10 +147,10 @@ export default function ContactPage() {
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <MessageSquare className="w-5 h-5 mr-2" />
-                  Send Us a Message
+                  Get Professional Safety Consultation
                 </CardTitle>
                 <CardDescription>
-                  Get a response within 24 hours from our electrical safety experts
+                  Receive expert guidance from certified electrical safety professionals within 2 hours
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -173,32 +174,32 @@ export default function ContactPage() {
                     <Input id="company" placeholder="Your Company" />
                   </div>
                   <div>
-                    <Label htmlFor="inquiryType">Inquiry Type</Label>
+                    <Label htmlFor="inquiryType">Safety Consultation Type</Label>
                     <Select>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select inquiry type" />
+                        <SelectValue placeholder="Select consultation type" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="product">Product Question</SelectItem>
-                        <SelectItem value="support">Technical Support</SelectItem>
-                        <SelectItem value="custom">Custom Quote</SelectItem>
-                        <SelectItem value="bulk">Bulk Order</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
+                        <SelectItem value="safety">Safety Assessment</SelectItem>
+                        <SelectItem value="compliance">NEC Compliance Review</SelectItem>
+                        <SelectItem value="emergency">Emergency Support</SelectItem>
+                        <SelectItem value="custom">Custom Safety Solution</SelectItem>
+                        <SelectItem value="training">Professional Training</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                   <div>
-                    <Label htmlFor="message">Message</Label>
+                    <Label htmlFor="message">Describe Your Safety Needs</Label>
                     <textarea
                       id="message"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-electric-blue"
                       rows={4}
-                      placeholder="How can we help you?"
+                      placeholder="Tell us about your electrical safety concerns or requirements..."
                     />
                   </div>
                   <Button className="w-full bg-electric-blue hover:bg-electric-blue/90">
                     <Send className="w-4 h-4 mr-2" />
-                    Send Message
+                    Get Expert Consultation
                   </Button>
                 </form>
               </CardContent>
@@ -209,10 +210,10 @@ export default function ContactPage() {
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <CheckCircle className="w-5 h-5 mr-2" />
-                  Get a Quick Quote
+                  Professional Safety Solution Quote
                 </CardTitle>
                 <CardDescription>
-                  Tell us about your project and we'll provide a custom quote
+                  Get a custom safety solution quote tailored to your specific panel configuration
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -378,28 +379,28 @@ export default function ContactPage() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Trusted by Professionals</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Trusted by Electrical Safety Professionals</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Join thousands of electrical professionals who trust ClearCircuit for their panel labeling needs
+              Join thousands of electrical professionals who rely on ClearCircuit for critical safety solutions
             </p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-3xl font-bold text-electric-blue mb-2">10,000+</div>
-              <div className="text-gray-600">Happy Customers</div>
+              <div className="text-gray-600">Accidents Prevented</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-electric-blue mb-2">4.9/5</div>
-              <div className="text-gray-600">Customer Rating</div>
+              <div className="text-gray-600">Professional Rating</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-electric-blue mb-2">24/7</div>
-              <div className="text-gray-600">Emergency Support</div>
+              <div className="text-gray-600">Emergency Safety Line</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-electric-blue mb-2">100%</div>
-              <div className="text-gray-600">NEC Compliant</div>
+              <div className="text-gray-600">Inspection Pass Rate</div>
             </div>
           </div>
         </div>
@@ -418,19 +419,20 @@ export default function ContactPage() {
       <section className="py-16 bg-electric-blue">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Ready to Get Started?
+            Don't Wait - Your Team's Safety Can't Wait
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Don't wait - our electrical safety experts are standing by to help you find the perfect solution.
+            Every electrical accident is preventable. Get immediate expert consultation from certified 
+            electrical safety professionals who understand your critical needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-white text-electric-blue hover:bg-gray-100">
               <Phone className="w-5 h-5 mr-2" />
-              Call Now: (555) 123-4567
+              Emergency Line: (555) 911-SAFE
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-electric-blue">
               <Mail className="w-5 h-5 mr-2" />
-              Email Us Today
+              Get Expert Consultation
             </Button>
           </div>
         </div>

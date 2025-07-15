@@ -40,14 +40,22 @@ export default function HomePage() {
     <div>
       <ScrollTracker />
       {/* Structured Data */}
-      <StructuredData type="organization" />
       <StructuredData 
-        type="website" 
-        page={{
-          title: 'ClearCircuit™ - Code-Compliant Breaker Panel Labels',
-          description: 'Professional electrical panel labeling solutions that meet NEC 408.4(A) standards. Trusted by electricians and homeowners nationwide for safer, clearer circuits.',
-          url: '/'
-        }}
+        pageType="home"
+        faq={[
+          {
+            question: 'What are NEC 408.4(A) compliant electrical panel labels?',
+            answer: 'NEC 408.4(A) compliant labels are professional electrical panel labels that meet the National Electrical Code requirements for circuit identification. They must be durable, legible, and properly describe the purpose of each circuit breaker.'
+          },
+          {
+            question: 'How long do professional panel labels last?',
+            answer: 'Our professional panel labels are designed to last the lifetime of your electrical panel. They are made from durable materials that resist fading, peeling, and environmental damage.'
+          },
+          {
+            question: 'Are these labels required for electrical inspections?',
+            answer: 'Yes, properly labeled electrical panels are required by the National Electrical Code (NEC) and are essential for passing electrical inspections. Unlabeled or improperly labeled panels often result in code violations.'
+          }
+        ]}
       />
       
       {/* Hero Section */}

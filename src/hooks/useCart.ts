@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { CartItem, PanelLabelKit, Cart } from '@/types';
+import { trackAddToCart, trackRemoveFromCart } from '@/components/analytics/Analytics';
 
 interface CartState {
   items: CartItem[];
@@ -37,9 +38,17 @@ export const useCart = create<CartState>()(
             items: [...state.items, { id: product.id, product, quantity }],
           };
         });
+        
+        // Track add to cart
+        trackAddToCart(product, quantity);
       },
       
       removeItem: (id: string) => {
+        const item = get().items.find(item => item.id === id);
+        if (item) {
+          trackRemoveFromCart(item.product, item.quantity);
+        }
+        
         set((state) => ({
           items: state.items.filter(item => item.id !== id),
         }));

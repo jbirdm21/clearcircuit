@@ -89,7 +89,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-electric-blue hover:bg-gray-50 rounded-md"
+                className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-electric-blue hover:bg-gray-50 rounded-md min-h-[48px] flex items-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.name}

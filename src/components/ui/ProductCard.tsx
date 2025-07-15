@@ -1,7 +1,8 @@
 'use client';
 
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { ProductImage } from '@/components/performance/OptimizedImage';
 import Link from 'next/link';
 import { Star, ShoppingCart, Check } from 'lucide-react';
 import { Button } from './button';
@@ -10,6 +11,8 @@ import { Card, CardContent } from './card';
 import { PanelLabelKit } from '@/types';
 import { useCart } from '@/hooks/useCart';
 import { toast } from 'sonner';
+import { trackProductView } from '@/components/analytics/Analytics';
+import { ProductShare } from '@/components/social/SocialShare';
 
 interface ProductCardProps {
   product: PanelLabelKit;
@@ -26,6 +29,11 @@ export default function ProductCard({
   const discountPercentage = product.originalPrice 
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
     : 0;
+
+  // Track product view when component mounts
+  useEffect(() => {
+    trackProductView(product);
+  }, [product]);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -49,12 +57,11 @@ export default function ProductCard({
           <Link href={`/products/${product.slug}`}>
             {/* Image Container */}
             <div className="relative overflow-hidden rounded-t-lg">
-              <Image
+              <ProductImage
                 src={product.image}
                 alt={product.name}
-                width={400}
-                height={variant === 'compact' ? 200 : 300}
                 className="w-full h-48 md:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                priority={false}
               />
               
               {/* Badges */}
@@ -151,6 +158,15 @@ export default function ProductCard({
                     Save ${((product.originalPrice || 0) - product.price).toFixed(2)}
                   </span>
                 )}
+              </div>
+
+              {/* Social Share */}
+              <div className="border-t pt-3 mb-4">
+                <ProductShare
+                  productName={product.name}
+                  productUrl={`https://clearcircuit.com/products/${product.slug}`}
+                  productImage={product.image}
+                />
               </div>
 
               {/* Actions */}

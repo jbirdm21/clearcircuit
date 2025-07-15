@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Layout from "@/components/layout/Layout";
 import { Toaster } from "@/components/ui/sonner";
+import Analytics from "@/components/analytics/Analytics";
+import PerformanceMonitor from "@/components/performance/PerformanceMonitor";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -60,6 +62,15 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    yandex: process.env.YANDEX_VERIFICATION,
+  },
+  other: {
+    "theme-color": "#1F6FEB",
+    "msapplication-TileColor": "#1F6FEB",
+    "msapplication-config": "/browserconfig.xml",
+  },
 };
 
 export default function RootLayout({
@@ -68,13 +79,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="antialiased">
-        <Layout>
-          {children}
-        </Layout>
-        <Toaster />
-      </body>
-    </html>
+          <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+        <body className="antialiased">
+          <Analytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-XXXXXXXXXX'} />
+          <PerformanceMonitor />
+          <Layout>
+            {children}
+          </Layout>
+          <Toaster />
+        </body>
+      </html>
   );
 }

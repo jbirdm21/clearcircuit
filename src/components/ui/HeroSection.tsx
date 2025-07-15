@@ -66,12 +66,12 @@ export default function HeroSection({
             </div>
 
             {/* Title */}
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-6">
               {title}
             </h1>
 
             {/* Subtitle */}
-            <p className="text-xl text-gray-300 mb-8 max-w-lg mx-auto lg:mx-0">
+            <p className="text-lg sm:text-xl text-gray-300 mb-8 max-w-lg mx-auto lg:mx-0">
               {subtitle}
             </p>
 

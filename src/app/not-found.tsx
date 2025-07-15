@@ -16,7 +16,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import SEOMetaTags from '@/components/seo/SEOMetaTags';
+// import SEOMetaTags from '@/components/seo/SEOMetaTags';
 
 export const metadata: Metadata = {
   title: 'Page Not Found - ClearCircuit',
@@ -91,13 +91,13 @@ export default function NotFound() {
 
   return (
     <>
-      <SEOMetaTags
+      {/* <SEOMetaTags
         title="Page Not Found | ClearCircuit"
         description="The page you're looking for doesn't exist. Find electrical safety solutions and professional panel labeling products at ClearCircuit."
         pageType="home"
         noIndex={true}
         noFollow={true}
-      />
+      /> */}
       
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
         {/* Hero Section */}

@@ -2,10 +2,11 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Gift, Clock, Shield, Star, CheckCircle } from 'lucide-react';
+import { X, Gift, Clock, Shield, Star, CheckCircle, AlertTriangle, Phone, Download, Zap, UserCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { trackEvent } from '@/components/analytics/Analytics';
 import { toast } from 'sonner';
 
@@ -26,6 +27,9 @@ interface ExitIntentOffer {
   };
   benefits: string[];
   socialProof?: string;
+  priority?: 'low' | 'medium' | 'high' | 'emergency';
+  emergencyContact?: boolean;
+  safetyFocus?: boolean;
 }
 
 interface ExitIntentPopupProps {
@@ -37,64 +41,130 @@ interface ExitIntentPopupProps {
   offers?: ExitIntentOffer[];
   onClose?: () => void;
   onConvert?: (offer: ExitIntentOffer, email?: string) => void;
+  emergencyMode?: boolean;
+  pageType?: 'home' | 'product' | 'safety' | 'contact' | 'assessment';
 }
 
 const defaultOffers: ExitIntentOffer[] = [
   {
-    id: 'discount-15',
-    title: 'Wait! Save 15% on Your First Order',
-    subtitle: 'Don\'t leave without securing your electrical safety',
-    description: 'Get professional-grade panel labels with our exclusive first-time buyer discount.',
-    ctaText: 'Claim 15% Off Now',
-    ctaLink: '/products?discount=EXIT15',
-    discount: '15% OFF',
-    urgency: 'Limited time offer',
-    icon: Gift,
+    id: 'emergency-safety',
+    title: 'Electrical Emergency? Don\'t Wait!',
+    subtitle: 'Get immediate safety support from our experts',
+    description: 'Having electrical labeling issues that could compromise safety? Our emergency team is available 24/7 to help prevent accidents.',
+    ctaText: 'Call Emergency Line Now',
+    ctaLink: 'tel:+15559115233',
+    urgency: '24/7 Emergency Support Available',
+    icon: AlertTriangle,
+    priority: 'emergency',
+    emergencyContact: true,
+    safetyFocus: true,
     benefits: [
-      'Code-compliant NEC 408.4(A) labels',
-      'Professional installation in 5 minutes',
-      'Lifetime durability guarantee',
-      'Free shipping on orders over $50'
+      '24/7 emergency safety consultation',
+      'Immediate electrical hazard assessment',
+      'Same-day emergency labeling solutions',
+      'Direct line to certified safety experts'
     ],
-    socialProof: 'Join 10,000+ satisfied customers'
+    socialProof: 'Helped 500+ customers avoid electrical accidents'
+  },
+  {
+    id: 'safety-assessment',
+    title: 'Free Safety Assessment Before You Go',
+    subtitle: 'Don\'t risk electrical accidents - get your safety score now',
+    description: 'Take our 2-minute safety assessment to identify potential electrical hazards in your facility.',
+    ctaText: 'Get My Safety Score',
+    ctaLink: '/safety-assessment',
+    urgency: 'Every electrical accident is preventable',
+    icon: Shield,
+    priority: 'high',
+    safetyFocus: true,
+    benefits: [
+      'Identify electrical safety risks',
+      'Get personalized safety recommendations',
+      'NEC compliance verification',
+      'Prevent costly violations and accidents'
+    ],
+    socialProof: 'Completed by 2,000+ safety professionals'
+  },
+  {
+    id: 'discount-safety',
+    title: 'Save 20% on Professional Safety Labels',
+    subtitle: 'Protect your facility with code-compliant labeling',
+    description: 'Professional electrical panel labels that meet NEC 408.4(A) standards. Don\'t compromise on safety.',
+    ctaText: 'Secure Safety Labels Now',
+    ctaLink: '/products?discount=SAFETY20',
+    discount: '20% OFF',
+    urgency: 'Safety shouldn\'t wait - Limited time offer',
+    icon: Zap,
+    priority: 'high',
+    safetyFocus: true,
+    benefits: [
+      'NEC 408.4(A) compliant labeling',
+      'Prevents electrical accidents',
+      'Professional installation in 5 minutes',
+      '100% inspection pass guarantee'
+    ],
+    socialProof: 'Trusted by 10,000+ electrical professionals'
+  },
+  {
+    id: 'safety-consultation',
+    title: 'FREE Expert Safety Consultation',
+    subtitle: 'Speak with a certified electrical safety expert',
+    description: 'Not sure about your electrical safety compliance? Get personalized advice from our certified experts.',
+    ctaText: 'Schedule Free Consultation',
+    ctaLink: '/contact?type=safety-consultation',
+    urgency: 'Available today - Book your slot',
+    icon: UserCheck,
+    priority: 'medium',
+    safetyFocus: true,
+    benefits: [
+      'Certified electrical safety expert',
+      'Personalized compliance assessment',
+      'Code violation prevention strategy',
+      'Priority support for implementation'
+    ],
+    socialProof: 'Rated 4.9/5 by 800+ safety managers'
   },
   {
     id: 'safety-guide',
-    title: 'Get Your FREE Electrical Safety Guide',
-    subtitle: 'Before you go, grab this $47 value guide',
-    description: 'Complete NEC compliance checklist and professional installation protocols.',
-    ctaText: 'Download Free Guide',
-    urgency: 'Instant download',
-    icon: Shield,
+    title: 'Complete Electrical Safety Guide',
+    subtitle: 'Get your FREE $97 safety compliance guide',
+    description: 'Comprehensive NEC compliance checklist and electrical safety protocols used by professionals.',
+    ctaText: 'Download Safety Guide',
+    urgency: 'Instant download - Prevent accidents today',
+    icon: Download,
+    priority: 'medium',
+    safetyFocus: true,
     leadMagnet: {
-      title: 'Electrical Safety Guide',
+      title: 'Professional Electrical Safety Guide',
       description: 'Complete NEC compliance checklist and safety protocols',
       fileName: 'electrical-safety-guide.pdf'
     },
     benefits: [
       'NEC 408.4(A) compliance checklist',
-      'Professional installation protocols',
-      'Safety inspection guidelines',
-      'Code violation prevention tips'
+      'Professional safety inspection protocols',
+      'Electrical accident prevention guide',
+      'Code violation prevention strategies'
     ],
-    socialProof: 'Downloaded by 5,000+ professionals'
+    socialProof: 'Downloaded by 8,000+ safety professionals'
   },
   {
-    id: 'consultation',
-    title: 'FREE 15-Minute Safety Consultation',
-    subtitle: 'Not sure which kit is right for you?',
-    description: 'Speak with our electrical safety expert to get personalized recommendations.',
-    ctaText: 'Schedule Free Call',
-    ctaLink: '/contact?type=consultation',
-    urgency: 'Book within 24 hours',
-    icon: Star,
+    id: 'last-chance',
+    title: 'Last Chance - 15% Off Safety Labels',
+    subtitle: 'Don\'t leave your facility at risk',
+    description: 'This is your final opportunity to secure professional electrical safety labels at a discount.',
+    ctaText: 'Claim Final Discount',
+    ctaLink: '/products?discount=FINAL15',
+    discount: '15% OFF',
+    urgency: 'Final offer - Expires when you leave',
+    icon: Gift,
+    priority: 'low',
     benefits: [
-      'Personalized kit recommendations',
-      'Code compliance verification',
-      'Installation best practices',
-      'Priority customer support'
+      'Professional electrical panel labels',
+      'NEC compliant and inspection-ready',
+      'Lifetime durability guarantee',
+      'Free installation support'
     ],
-    socialProof: 'Rated 4.9/5 by 500+ customers'
+    socialProof: 'Join 12,000+ satisfied customers'
   }
 ];
 
@@ -106,7 +176,9 @@ export default function ExitIntentPopup({
   storageKey = 'exit-intent-popup',
   offers = defaultOffers,
   onClose,
-  onConvert
+  onConvert,
+  emergencyMode = false,
+  pageType = 'home'
 }: ExitIntentPopupProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [currentOfferIndex, setCurrentOfferIndex] = useState(0);
@@ -116,7 +188,23 @@ export default function ExitIntentPopup({
   const hasTriggered = useRef(false);
   const displayCount = useRef(0);
 
-  const currentOffer = offers[currentOfferIndex];
+  // Filter offers based on page type and emergency mode
+  const filteredOffers = offers.filter(offer => {
+    if (emergencyMode) {
+      return offer.emergencyContact || offer.priority === 'emergency';
+    }
+    
+    if (pageType === 'safety') {
+      return offer.safetyFocus;
+    }
+    
+    return true;
+  }).sort((a, b) => {
+    const priorityOrder = { emergency: 4, high: 3, medium: 2, low: 1 };
+    return (priorityOrder[b.priority || 'low'] - priorityOrder[a.priority || 'low']);
+  });
+
+  const currentOffer = filteredOffers[currentOfferIndex] || offers[0];
 
   // Check if popup should be shown
   useEffect(() => {
@@ -132,8 +220,9 @@ export default function ExitIntentPopup({
         return;
       }
       
-      // Don't show if shown recently (within 24 hours)
-      if (lastShown && Date.now() - lastShown < 24 * 60 * 60 * 1000) {
+      // Don't show if shown recently (reduce frequency for safety-focused content)
+      const timeWindow = emergencyMode ? 12 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000;
+      if (lastShown && Date.now() - lastShown < timeWindow) {
         return;
       }
     }
@@ -161,13 +250,14 @@ export default function ExitIntentPopup({
         }
       };
 
-      // Time-based fallback
+      // Time-based fallback (shorter for emergency mode)
+      const fallbackTime = emergencyMode ? 30000 : 45000;
       const timeoutFallback = setTimeout(() => {
         if (!hasTriggered.current) {
           hasTriggered.current = true;
           showPopup();
         }
-      }, 45000); // 45 seconds
+      }, fallbackTime);
 
       document.addEventListener('mouseleave', handleMouseLeave);
       window.addEventListener('scroll', handleScroll);
@@ -180,7 +270,7 @@ export default function ExitIntentPopup({
     }, delay);
 
     return () => clearTimeout(delayTimer);
-  }, [enabled, delay, sensitivity, maxDisplays, storageKey]);
+  }, [enabled, delay, sensitivity, maxDisplays, storageKey, emergencyMode]);
 
   const showPopup = () => {
     setIsVisible(true);
@@ -197,7 +287,12 @@ export default function ExitIntentPopup({
     trackEvent('exit_intent_shown', {
       category: 'conversion',
       label: currentOffer.id,
-      value: displayCount.current
+      value: displayCount.current,
+      custom_parameters: {
+        page_type: pageType,
+        emergency_mode: emergencyMode,
+        offer_priority: currentOffer.priority
+      }
     });
   };
 
@@ -207,7 +302,11 @@ export default function ExitIntentPopup({
     
     trackEvent('exit_intent_dismissed', {
       category: 'conversion',
-      label: currentOffer.id
+      label: currentOffer.id,
+      custom_parameters: {
+        page_type: pageType,
+        emergency_mode: emergencyMode
+      }
     });
   };
 
@@ -220,7 +319,24 @@ export default function ExitIntentPopup({
     setIsSubmitting(true);
 
     try {
-      // Simulate API call
+      // For emergency contact, immediately redirect to phone
+      if (currentOffer.emergencyContact) {
+        window.location.href = currentOffer.ctaLink || 'tel:+15559115233';
+        
+        trackEvent('emergency_contact_initiated', {
+          category: 'safety',
+          label: currentOffer.id,
+          custom_parameters: {
+            page_type: pageType,
+            contact_method: 'phone'
+          }
+        });
+        
+        setIsVisible(false);
+        return;
+      }
+
+      // Simulate API call for other offers
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       setHasConverted(true);
@@ -236,7 +352,12 @@ export default function ExitIntentPopup({
       trackEvent('exit_intent_converted', {
         category: 'conversion',
         label: currentOffer.id,
-        value: currentOffer.discount ? parseInt(currentOffer.discount) : 1
+        value: currentOffer.discount ? parseInt(currentOffer.discount) : 1,
+        custom_parameters: {
+          page_type: pageType,
+          emergency_mode: emergencyMode,
+          offer_priority: currentOffer.priority
+        }
       });
 
       if (onConvert) {
@@ -247,7 +368,9 @@ export default function ExitIntentPopup({
       toast.success('Success!', {
         description: currentOffer.leadMagnet 
           ? `${currentOffer.leadMagnet.title} will be sent to your email shortly.`
-          : 'Your offer has been applied!'
+          : currentOffer.safetyFocus 
+            ? 'Your safety is our priority - we\'ll be in touch soon!'
+            : 'Your offer has been applied!'
       });
 
       // Close popup after delay
@@ -255,7 +378,7 @@ export default function ExitIntentPopup({
         setIsVisible(false);
         
         // Redirect if specified
-        if (currentOffer.ctaLink) {
+        if (currentOffer.ctaLink && !currentOffer.emergencyContact) {
           window.location.href = currentOffer.ctaLink;
         }
       }, 2000);
@@ -268,9 +391,35 @@ export default function ExitIntentPopup({
   };
 
   const handleSwitchOffer = () => {
-    setCurrentOfferIndex((prev) => (prev + 1) % offers.length);
+    setCurrentOfferIndex((prev) => (prev + 1) % filteredOffers.length);
     setEmail('');
     setHasConverted(false);
+  };
+
+  const getPriorityColor = (priority?: string) => {
+    switch (priority) {
+      case 'emergency':
+        return 'bg-red-600';
+      case 'high':
+        return 'bg-safety-orange';
+      case 'medium':
+        return 'bg-safety-yellow';
+      default:
+        return 'bg-electric-blue';
+    }
+  };
+
+  const getPriorityBadge = (priority?: string) => {
+    switch (priority) {
+      case 'emergency':
+        return <Badge className="bg-red-600 text-white">Emergency</Badge>;
+      case 'high':
+        return <Badge className="bg-safety-orange text-white">High Priority</Badge>;
+      case 'medium':
+        return <Badge className="bg-safety-yellow text-dark-grey">Safety Focus</Badge>;
+      default:
+        return null;
+    }
   };
 
   if (!isVisible) return null;
@@ -292,7 +441,7 @@ export default function ExitIntentPopup({
           className="w-full max-w-md"
           onClick={(e) => e.stopPropagation()}
         >
-          <Card className="relative shadow-2xl border-0 bg-white">
+          <Card className="relative shadow-2xl border-0 bg-white overflow-hidden">
             {/* Close button */}
             <button
               onClick={handleClose}
@@ -302,32 +451,39 @@ export default function ExitIntentPopup({
               <X className="w-4 h-4" />
             </button>
 
+            {/* Priority badge */}
+            {currentOffer.priority && (
+              <div className="absolute top-4 left-4 z-10">
+                {getPriorityBadge(currentOffer.priority)}
+              </div>
+            )}
+
             {/* Urgency banner */}
             {currentOffer.urgency && (
-              <div className="bg-safety-orange text-white text-center py-2 px-4 text-sm font-medium rounded-t-xl">
+              <div className={`${getPriorityColor(currentOffer.priority)} text-white text-center py-3 px-4 text-sm font-medium`}>
                 <Clock className="w-4 h-4 inline mr-2" />
                 {currentOffer.urgency}
               </div>
             )}
 
-            <CardHeader className="text-center pb-4">
+            <CardHeader className="text-center pb-4 pt-8">
               <div className="flex justify-center mb-4">
-                <div className="w-16 h-16 bg-electric-blue/10 rounded-full flex items-center justify-center">
-                  <currentOffer.icon className="w-8 h-8 text-electric-blue" />
+                <div className={`w-20 h-20 ${getPriorityColor(currentOffer.priority)}/10 rounded-full flex items-center justify-center`}>
+                  <currentOffer.icon className={`w-10 h-10 ${getPriorityColor(currentOffer.priority).replace('bg-', 'text-')}`} />
                 </div>
               </div>
               
               {currentOffer.discount && (
-                <div className="inline-block bg-safety-yellow text-dark-grey px-4 py-2 rounded-full text-lg font-bold mb-4">
+                <div className="inline-block bg-safety-yellow text-dark-grey px-6 py-3 rounded-full text-xl font-bold mb-4 shadow-lg">
                   {currentOffer.discount}
                 </div>
               )}
               
-              <CardTitle className="text-xl font-bold text-gray-900 mb-2">
+              <CardTitle className="text-2xl font-bold text-gray-900 mb-3">
                 {currentOffer.title}
               </CardTitle>
               
-              <p className="text-gray-600 text-sm mb-4">
+              <p className="text-gray-600 text-base mb-4 font-medium">
                 {currentOffer.subtitle}
               </p>
               
@@ -361,7 +517,7 @@ export default function ExitIntentPopup({
                     placeholder="Enter your email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full"
+                    className="w-full py-3 text-base"
                     required
                   />
                   <p className="text-xs text-gray-500 text-center">
@@ -370,31 +526,66 @@ export default function ExitIntentPopup({
                 </div>
               )}
 
+              {/* Emergency contact info */}
+              {currentOffer.emergencyContact && (
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
+                  <Phone className="w-6 h-6 text-red-600 mx-auto mb-2" />
+                  <p className="text-sm text-red-700 font-medium">
+                    24/7 Emergency Line: (555) 911-SAFE
+                  </p>
+                  <p className="text-xs text-red-600 mt-1">
+                    Response time: Under 30 minutes
+                  </p>
+                </div>
+              )}
+
               {/* CTA Button */}
               <Button
                 onClick={handleConvert}
                 disabled={isSubmitting || hasConverted}
-                loading={isSubmitting}
-                className="w-full bg-electric-blue hover:bg-electric-blue/90 text-white py-6 text-lg font-semibold"
+                className={`w-full ${getPriorityColor(currentOffer.priority)} hover:opacity-90 text-white py-6 text-lg font-semibold transition-all duration-200 ${
+                  currentOffer.emergencyContact ? 'animate-pulse' : ''
+                }`}
                 size="lg"
               >
-                {hasConverted ? 'Success!' : currentOffer.ctaText}
+                {isSubmitting ? (
+                  <>
+                    <Clock className="w-5 h-5 mr-2 animate-spin" />
+                    {currentOffer.emergencyContact ? 'Connecting...' : 'Processing...'}
+                  </>
+                ) : hasConverted ? (
+                  'Success!'
+                ) : (
+                  <>
+                    {currentOffer.emergencyContact && <Phone className="w-5 h-5 mr-2" />}
+                    {currentOffer.ctaText}
+                  </>
+                )}
               </Button>
 
               {/* Social proof */}
               {currentOffer.socialProof && (
-                <p className="text-xs text-gray-500 text-center">
-                  {currentOffer.socialProof}
-                </p>
+                <div className="text-center">
+                  <div className="flex items-center justify-center mb-2">
+                    <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                    <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                    <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                    <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                    <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  </div>
+                  <p className="text-xs text-gray-500">
+                    {currentOffer.socialProof}
+                  </p>
+                </div>
               )}
 
               {/* Switch offer */}
-              {offers.length > 1 && (
+              {filteredOffers.length > 1 && (
                 <button
                   onClick={handleSwitchOffer}
-                  className="w-full text-sm text-gray-500 hover:text-gray-700 transition-colors"
+                  className="w-full text-sm text-gray-500 hover:text-gray-700 transition-colors py-2"
                 >
-                  Not interested? See other offers
+                  {currentOffer.emergencyContact ? 'See other safety options' : 'Not interested? See other offers'}
                 </button>
               )}
             </CardContent>
@@ -403,4 +594,17 @@ export default function ExitIntentPopup({
       </motion.div>
     </AnimatePresence>
   );
+}
+
+// Hook for triggering emergency mode
+export function useEmergencyExitIntent() {
+  const [emergencyMode, setEmergencyMode] = useState(false);
+
+  const triggerEmergencyMode = () => {
+    setEmergencyMode(true);
+    // Clear existing storage to ensure emergency popup shows
+    localStorage.removeItem('exit-intent-popup');
+  };
+
+  return { emergencyMode, triggerEmergencyMode };
 } 

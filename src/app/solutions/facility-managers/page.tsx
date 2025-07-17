@@ -125,11 +125,15 @@ export default function FacilityManagersPage() {
               Protect your facility and budget with professional electrical labeling that prevents costly incidents, ensures compliance, and delivers measurable cost savings.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <SmartCTA 
+              {/* <SmartCTA
                 pageType="product"
-                size="lg" 
-                className="bg-white text-electric-blue hover:bg-gray-100"
-              />
+                userType="returning"
+                position="inline"
+                size="lg"
+                className="bg-electric-blue hover:bg-electric-blue/90"
+                showMultiple={false}
+                maxCTAs={1}
+              /> */}
               <Button 
                 variant="outline" 
                 size="lg" 
@@ -195,7 +199,7 @@ export default function FacilityManagersPage() {
                 <p className="text-lg text-red-700 mb-6">
                   Every day without professional labeling increases your facility's risk exposure. Don't wait for an incident to justify the investment.
                 </p>
-                <SmartCTA pageType="product" size="lg" className="bg-red-600 hover:bg-red-700" />
+                {/* <SmartCTA pageType="product" size="lg" className="bg-red-600 hover:bg-red-700" /> */}
               </div>
             </div>
           </div>

@@ -10,7 +10,6 @@ import { Separator } from '@/components/ui/separator';
 import { getProductBySlug, products } from '@/data/products';
 import { getTestimonialsByProduct } from '@/data/testimonials';
 import StructuredData from '@/components/seo/StructuredData';
-import TrustBadges from '@/components/ui/TrustBadges';
 
 interface ProductPageProps {
   params: Promise<{

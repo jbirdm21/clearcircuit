@@ -39,16 +39,28 @@ interface ButtonProps extends React.ComponentProps<"button">, VariantProps<typeo
   asChild?: boolean
   loading?: boolean
   loadingText?: string
-  animate?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, loading = false, loadingText = "Loading...", animate = true, disabled, children, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
+  ({ className, variant, size, asChild = false, loading = false, loadingText = "Loading...", disabled, children, ...props }, ref) => {
     const isDisabled = disabled || loading
 
-    const buttonContent = (
-      <Comp
+    // Simplified asChild handling
+    if (asChild && React.isValidElement(children)) {
+      return (
+        <Slot
+          ref={ref}
+          className={cn(buttonVariants({ variant, size, className }))}
+          {...props}
+        >
+          {children}
+        </Slot>
+      )
+    }
+
+    // Regular button
+    return (
+      <button
         ref={ref}
         className={cn(buttonVariants({ variant, size, className }))}
         disabled={isDisabled}
@@ -58,34 +70,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {loading && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            className="mr-2"
-          >
-            <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-          </motion.div>
+          <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin mr-2" />
         )}
-        <span className={loading ? "opacity-70" : ""}>
-          {loading ? loadingText : children}
-        </span>
-      </Comp>
+        {loading ? loadingText : children}
+      </button>
     )
-
-    if (animate && !asChild) {
-      return (
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ type: "spring", stiffness: 400, damping: 17 }}
-        >
-          {buttonContent}
-        </motion.div>
-      )
-    }
-
-    return buttonContent
   }
 )
 
